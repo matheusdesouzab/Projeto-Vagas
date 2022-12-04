@@ -1,26 +1,26 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <topo-padrao-component @navegar="componente = $event"  />
+    <conteudo-component :conteudo="componente" />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ConteudoComponent from '@/components/layouts/ConteudoComponent.vue'
+import TopoPadraoComponent from '@/components/layouts/TopoPadraoComponent.vue'
 
 export default {
   name: 'App',
+  data: () => ({
+    componente: 'Home'
+  }),
   components: {
-    HelloWorld
+    ConteudoComponent,
+    TopoPadraoComponent
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped>
+
 </style>
