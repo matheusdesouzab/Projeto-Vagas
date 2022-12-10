@@ -1,5 +1,5 @@
 <template>
-    <div class="container py-4">
+    <div class="container p-4 bg-white my-5">
         <div class="row">
             <div class="col">
                 <h4>Apresente a sua vaga para milhares de profissionais e de graça</h4>
@@ -84,13 +84,52 @@ export default {
                 publicacao: dataAtual.toISOString()
             })
 
-            localStorage.setItem('vagas', JSON.stringify(vagas))
+            if (this.validaFormulario()) {
+
+                localStorage.setItem('vagas', JSON.stringify(vagas))
+
+                this.emitter.emit('alerta', {
+                    titulo: `A vaga ${this.titulo} foi cadastrada com sucesso`,
+                    tipo: 'sucesso',
+                    descricao: 'Parabéns, a vaga foi cadastrada e poderá ser consultada por milhares de profissionais'
+                })
+
+                this.resertaFormularioCadastroVaga()
+
+            } else {
+                this.emitter.emit('alerta', {
+                    titulo: `Ops... Não foi possível realizar o cadastro da vaga`,
+                    tipo: 'erro',
+                    descricao: 'Parece que você esqueceu de preencher alguma informação'
+                })
+            }
+
+        },
+        resertaFormularioCadastroVaga() {
+            this.titulo = '',
+                this.descricao = '',
+                this.salario = '',
+                this.modalidade = '',
+                this.tipo = ''
+        },
+        validaFormulario() {
+            let valido = true
+
+            if (this.titulo === '') valido = false
+            if (this.descricao === '') valido = false
+            if (this.salario === '') valido = false
+            if (this.modalidade === '') valido = false
+            if (this.tipo === '') valido = false
+
+            return valido
         }
-    }
+    },
 }
 </script>
   
-<style>
-
+<style scoped>
+.container {
+    border-radius: 10px;
+}
 </style>
   
