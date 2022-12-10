@@ -24,7 +24,9 @@ Projeto desenvolvido a partir do curso de [Desenvolvimento Web Avançado 2022 co
 
 ## Baixar projeto
 
-`git clone https://github.com/matheusdesouzab/Projeto-Vagas.git`
+```
+git clone https://github.com/matheusdesouzab/Projeto-Vagas.git
+```
 
 ## Baixa Dependências
 ```
@@ -35,6 +37,8 @@ npm install
 ```
 npm run serve
 ```
+
+Se tudo ocorrer bem, a aplicação estara disponível em [localhost:8080](http://localhost:8080)
 
 
 
